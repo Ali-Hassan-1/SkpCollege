@@ -1,25 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from "./components/Pages/Home";
+import SimpleNav from "./components/Navbars/Nav";
+import MenuNavbar from "./components/Navbars/Navbar";
+import Footer from "./components/Footer";
+import ContactUs from "./components/Pages/ContactUs";
+import { Redirect, Route, Switch } from "react-router-dom";
+import NotFound from "./components/Pages/NotFound";
+import "./App.css";
 
-function App() {
+const images = [
+  {
+    src: "https://res.cloudinary.com/tpostr/image/upload/v1553865338/paparouna/IMG_7638-01.jpg",
+    alt: "slide 1",
+    caption: "slide 1",
+  },
+  {
+    src: "https://res.cloudinary.com/tpostr/image/upload/v1553865338/paparouna/IMG_7621-01.jpg",
+    alt: "slide 2",
+    caption: "slide 2",
+  },
+  {
+    src: "https://res.cloudinary.com/tpostr/image/upload/v1553865337/paparouna/IMG_7615-01.jpg",
+    alt: "slide 3",
+    caption: "slide 3",
+  },
+];
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App bg-light">
+      <SimpleNav />
+      <MenuNavbar />
+
+      <>
+        <Switch>
+          <Route
+            path="/home"
+            render={(props) => <Home {...props} images={images} />}
+          />
+          <Route path="/contact" component={ContactUs} />
+          <Route path="/notfound" component={NotFound} />
+          <Redirect from="/" exact to="/home" />
+          <Redirect to="notfound" />
+        </Switch>
+      </>
+
+      <Footer />
     </div>
   );
-}
+};
 
 export default App;
