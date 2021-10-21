@@ -15,12 +15,8 @@ const CarouselItem = styled(Carousel.Item)`
 `;
 
 const CarouselCaption = styled(Carousel.Caption)`
-  /* position: relative; */
-  /* bottom: 25rem; */
-  /* width: 50%; */
-  /* left: 17rem; */
   text-align: left;
-  /* background: red; */
+
   h3 {
     font-size: 50px;
     font-weight: bold;
@@ -41,15 +37,6 @@ const CarouselCaption = styled(Carousel.Caption)`
     transition: all 0.3s ease-in;
     color: #ffffff;
     background: #ffb606;
-  }
-
-  @media only screen and (max-width: 800px) {
-    /* left: 10rem; */
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* text-align: center; */
   }
 `;
 
