@@ -36,6 +36,7 @@ export const Brand = styled(Navbar.Brand)`
 `;
 
 export const Collapse = styled(Navbar.Collapse)`
+  /* background: red !important; */
   @media screen and (max-width: 991px) {
     border-top: 1px solid #dddddd;
     margin-top: 1rem;

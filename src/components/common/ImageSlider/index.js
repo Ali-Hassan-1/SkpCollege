@@ -29,8 +29,9 @@ export default function ImageSlider({
       widthOfContainer={widthOfContainer}
       heightOfContainer={heightOfContainer}
     >
-      {images.map((image) => (
+      {images.map((image, index) => (
         <CarouselItem
+          key={index}
           widthOfItem={widthOfItem}
           heightOfItem={heightOfItem}
           interval={2000}

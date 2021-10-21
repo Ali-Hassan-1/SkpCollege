@@ -13,12 +13,16 @@ import {
   TogglerBtn,
 } from "./NavbarElement";
 
-const Menu = ({ item, collapse }) => {
+const Menu = ({ item, collapse, setExpanded }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
   if (!item.submenu) {
-    return <SimpleLinkR to={item.path}>{item.title}</SimpleLinkR>;
+    return (
+      <SimpleLinkR onClick={() => setExpanded(false)} to={item.path}>
+        {item.title}
+      </SimpleLinkR>
+    );
   }
 
   const mouseLeave = () => {
@@ -40,8 +44,12 @@ const Menu = ({ item, collapse }) => {
     >
       {(isHovered || isClicked) &&
         item.submenu.map((menu) => (
-          <LinkR onClick={() => setIsHovered(false)} to={menu.path}>
-            <p>{menu.title}</p>
+          <LinkR
+            key={menu.id}
+            onClick={() => setIsHovered(false)}
+            to={menu.path}
+          >
+            <p onClick={() => setExpanded(false)}>{menu.title}</p>
           </LinkR>
         ))}
     </NavLinkDropdown>
@@ -50,6 +58,7 @@ const Menu = ({ item, collapse }) => {
 
 function MenuNavbar() {
   const [collapse, setCollapse] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const changeHover = () => {
     if (window.outerWidth <= 991) {
@@ -82,21 +91,30 @@ function MenuNavbar() {
       sticky="top"
       className="shadow-sm p-2 mb-5 bg-white"
       expand="lg"
+      expanded={expanded}
     >
       <MenuContainer>
-        <TogglerBtn aria-controls="basic-navbar-nav" />
+        <TogglerBtn
+          aria-controls="basic-navbar-nav"
+          onClick={() => setExpanded(expanded ? false : "expanded")}
+        />
 
         <Brand href="/" className="App-logo">
           <img src={collegeLogo} alt="College Logo" />
         </Brand>
 
-        <Collapse id="basic-navbar-nav">
+        <Collapse onEntered={() => console.log("Enter")} id="basic-navbar-nav">
           <Menus
             className="m-auto justify-content-end"
             style={{ width: "100%" }}
           >
             {MenuItems.map((item) => (
-              <Menu item={item} collapse={collapse} />
+              <Menu
+                key={item.id}
+                item={item}
+                collapse={collapse}
+                setExpanded={(e) => setExpanded(e)}
+              />
             ))}
           </Menus>
         </Collapse>
