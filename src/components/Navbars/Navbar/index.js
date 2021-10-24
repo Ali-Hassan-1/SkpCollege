@@ -103,7 +103,7 @@ function MenuNavbar() {
           <img src={collegeLogo} alt="College Logo" />
         </Brand>
 
-        <Collapse onEntered={() => console.log("Enter")} id="basic-navbar-nav">
+        <Collapse id="basic-navbar-nav">
           <Menus
             className="m-auto justify-content-end"
             style={{ width: "100%" }}

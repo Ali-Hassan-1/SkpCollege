@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import Home from "./components/Pages/Home";
 import SimpleNav from "./components/Navbars/Nav";
 import MenuNavbar from "./components/Navbars/Navbar";
@@ -5,7 +6,9 @@ import Footer from "./components/Footer";
 import ContactUs from "./components/Pages/ContactUs";
 import { Redirect, Route, Switch } from "react-router-dom";
 import NotFound from "./components/Pages/NotFound";
+
 import "./App.css";
+import MyLoader from "./components/Loader";
 
 const images = [
   {
@@ -26,11 +29,21 @@ const images = [
 ];
 
 const App = () => {
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, []);
+
+  if (loading) {
+    return <MyLoader />;
+  }
+
   return (
     <div className="App bg-light">
       <SimpleNav />
       <MenuNavbar />
-
       <>
         <Switch>
           <Route
@@ -43,7 +56,6 @@ const App = () => {
           <Redirect to="notfound" />
         </Switch>
       </>
-
       <Footer />
     </div>
   );

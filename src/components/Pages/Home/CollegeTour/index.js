@@ -73,6 +73,23 @@ const DivContainer = styled.div`
   }
 `;
 
+const CoreTeam = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  padding: 5rem;
+`;
+
+const CoreTeamImageContainer = styled.div`
+  width: 60%;
+  height: 60vh;
+
+  @media screen and (max-width: 991px) {
+    width: 100%;
+  }
+`;
+
 const images = [
   {
     src: advisor1,
@@ -115,7 +132,6 @@ const CollegeTour = () => {
         backgroundImage: `url(${BlueBg})`,
         objectFit: "cover",
         backgroundSize: "cover",
-        // backgroundRepeat: "no-repeat",
         backgroundAttachment: "fixed",
       }}
     >
@@ -161,25 +177,15 @@ const CollegeTour = () => {
 
       {/* Core Team */}
 
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          background: "#ffffff",
-          padding: "5rem",
-        }}
-      >
+      <CoreTeam>
         <h1>Core Team</h1>
         <DividerLine />
-        <ImageSlider
-          images={images}
-          widthOfContainer="50vw"
-          widthOfItem="50vw"
-          heightOfItem="60vh"
-        />
-      </div>
+        <CoreTeamImageContainer>
+          <ImageSlider images={images} heightOfImage="60vh" />
+        </CoreTeamImageContainer>
+      </CoreTeam>
     </div>
   );
 };
+
 export default CollegeTour;

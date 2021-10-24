@@ -10,7 +10,6 @@ function Home({ images }) {
     <>
       <ImageSlider
         images={images}
-        height="100vh"
         caption="Here is my caption Here is my caption!"
         btnShow={true}
       />

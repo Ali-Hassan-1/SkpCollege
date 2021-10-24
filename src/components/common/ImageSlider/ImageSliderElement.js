@@ -3,15 +3,15 @@ import { Carousel } from "react-bootstrap";
 import styled from "styled-components";
 
 const CarouselContainer = styled(Carousel)`
-  width: ${({ widthOfContainer }) => widthOfContainer};
-  height: ${({ heightOfContainer }) => heightOfContainer};
+  /* width: ${({ widthOfContainer }) => widthOfContainer};
+  height: ${({ heightOfContainer }) => heightOfContainer}; */
   background: gray;
 `;
 
 const CarouselItem = styled(Carousel.Item)`
   transition: opacity 1s ease-in-out !important;
-  width: ${({ widthOfItem }) => (widthOfItem ? widthOfItem : "100%")};
-  height: ${({ heightOfItem }) => (heightOfItem ? heightOfItem : "100vh")};
+  /* width: ${({ widthOfItem }) => (widthOfItem ? widthOfItem : "100%")};
+  height: ${({ heightOfItem }) => (heightOfItem ? heightOfItem : "100vh")}; */
 `;
 
 const CarouselCaption = styled(Carousel.Caption)`

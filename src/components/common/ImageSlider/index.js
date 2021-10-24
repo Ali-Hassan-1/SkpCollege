@@ -14,34 +14,20 @@ import {
 
 export default function ImageSlider({
   images,
-  widthOfContainer,
-  heightOfContainer,
-  widthOfItem,
-  heightOfItem,
-  heightOfImage,
-  widthOfImage,
   caption,
   btnShow,
+  widthOfImage,
+  heightOfImage,
 }) {
   return (
-    <CarouselContainer
-      fade
-      widthOfContainer={widthOfContainer}
-      heightOfContainer={heightOfContainer}
-    >
+    <CarouselContainer fade>
       {images.map((image, index) => (
-        <CarouselItem
-          key={index}
-          widthOfItem={widthOfItem}
-          heightOfItem={heightOfItem}
-          interval={2000}
-        >
+        <CarouselItem key={index} interval={2000}>
           <CarouselImage
-            className="d-block w-100"
-            src={image.src}
-            alt={image.alt}
             widthOfImage={widthOfImage}
             heightOfImage={heightOfImage}
+            src={image.src}
+            alt={image.alt}
           />
 
           {caption && (
